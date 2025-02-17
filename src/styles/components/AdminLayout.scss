@@ -1,0 +1,39 @@
+@import '../../styles/variables.scss'; // Assuming you have variables.scss, remove if not
+
+.admin-layout {
+  min-height: 100vh; 
+
+  .admin-layout-sider {
+    .admin-layout-logo {
+      height: 64px;
+      margin: 8px;
+      text-align: center;
+  
+      img {
+        max-height: 100%;
+        max-width: 100%;
+        object-fit: cover; /* Đúng cách cho hình ảnh */
+      }
+    }
+  }
+  .site-layout { // Keeping site-layout class from Ant Design, style within it if needed
+    .admin-layout-header {
+      padding: 0;
+      background: #fff;
+      .admin-layout-header-title {
+        padding-left: 24px;
+        margin: 0;
+      }
+    }
+    .admin-layout-content {
+      margin: 16px;
+    }
+  }
+
+  // Optional: Style for the Menu component if needed beyond Ant Design's default dark theme
+  .admin-layout-menu {
+    // Add specific styles for the Menu if you want to customize it further
+  }
+}
+
+// You can further customize Ant Design's dark theme menu globally in your variables.scss or a global style file if needed.

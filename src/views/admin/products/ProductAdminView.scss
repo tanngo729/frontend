@@ -1,0 +1,62 @@
+@import '../../../styles/variables.scss';
+
+.product-admin-view {
+  padding: 20px; // Thêm padding tổng cho trang
+
+  .product-admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; // Tăng margin bottom để tạo khoảng cách với bảng
+
+    h1 {
+      font-size: 2.5em; // Tăng kích thước tiêu đề trang
+      color: $heading-color;
+      margin: 0;
+    }
+
+    .ant-input-search {
+      width: 300px;
+    }
+  }
+
+  .table-actions {
+    margin-bottom: 15px; // Thêm margin bottom cho khu vực nút hành động
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  // Style cho Ant Design Table
+  .ant-table-wrapper {
+    .ant-table {
+      font-size: 16px; // Kích thước chữ mặc định cho toàn bảng
+    }
+
+    .ant-table-thead > tr > th {
+      background-color: #f0f2f5; // Màu nền header khác biệt
+      color: $heading-color; // Màu chữ header
+      font-weight: bold;
+      font-size: 1.1em; // Tăng kích thước chữ header
+      padding: 12px 16px; // Tăng padding header
+      border-bottom: 2px solid #e8e8e8; // Đường kẻ đậm hơn dưới header
+    }
+
+    .ant-table-tbody > tr > td {
+      padding: 12px 16px; // Tăng padding data cell
+      font-size: 1em; // Kích thước chữ data cell
+      border-bottom: 1px solid #e8e8e8; // Đường kẻ phân cách hàng
+    }
+
+    .product-image-cell { // Style cho ảnh trong cột "Ảnh"
+      border-radius: $border-radius-base; // Bo tròn góc ảnh
+      overflow: hidden;
+    }
+  }
+
+  .ant-pagination-item,
+  .ant-pagination-prev,
+  .ant-pagination-next {
+    font-size: 1em; // Tăng kích thước chữ phân trang
+  }
+}
