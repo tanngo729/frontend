@@ -1,16 +1,16 @@
 // frontend/src/services/productService.js
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:5000'; // Thay đổi nếu backend chạy ở cổng khác
+const API_BASE_URL = 'https://backend-production-d68fa.up.railway.app';
 
 const productService = {
   getProductsClient: async () => {
     try {
       const response = await axios.get(`${API_BASE_URL}/products`);
-      return response.data; // Trả về dữ liệu sản phẩm từ response
+      return response.data;
     } catch (error) {
       console.error('Lỗi khi lấy danh sách sản phẩm từ API:', error);
-      throw error; // Re-throw error để component xử lý nếu cần
+      throw error;
     }
   },
   getProductDetail: async (productId) => {

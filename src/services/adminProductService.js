@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:5000'; // Đảm bảo backend đang chạy ở cổng này
+const API_BASE_URL = 'https://backend-production-d68fa.up.railway.app'; // Đảm bảo backend đang chạy ở cổng này
 
 const adminProductService = {
   // Lấy danh sách sản phẩm admin theo status và searchTerm
