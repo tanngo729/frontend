@@ -1,0 +1,226 @@
+// CategoryAdminView.scss
+@import '../../variables.scss';
+
+.category-admin-view {
+  // padding: 24px;
+  background: #f8fafc;
+  min-height: calc(100vh - 64px);
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    padding: 24px;
+    background: white;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+
+    h1 {
+      font-size: 24px;
+      font-weight: 600;
+      color: $heading-color;
+      margin: 0;
+      position: relative;
+      padding-left: 16px;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 24px;
+        background: $primary-color;
+        border-radius: 2px;
+      }
+    }
+
+    .ant-btn {
+      height: auto;
+      padding: 10px 24px;
+      border-radius: 6px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+
+      &:hover {
+        transform: translateY(-1px);
+        box-shadow: $box-shadow;
+      }
+    }
+  }
+
+  .ant-table-wrapper {
+    background: white;
+    border-radius: $border-radius;
+    overflow: hidden;
+    box-shadow: $box-shadow;
+
+    .ant-table {
+      border-radius: $border-radius;
+
+      &-thead {
+        > tr > th {
+          background: #f8fafc !important;
+          color: $heading-color;
+          font-weight: 600;
+          font-size: 14px;
+          padding: 16px;
+          border-bottom: 2px solid #f1f5f9;
+
+          &::before {
+            display: none !important;
+          }
+        }
+      }
+
+      &-tbody {
+        > tr {
+          transition: all 0.2s;
+
+          > td {
+            padding: 16px;
+            color: $text-color;
+            border-bottom: 1px solid #f1f5f9;
+
+            .ant-btn-link {
+              padding: 0;
+              height: auto;
+              
+              &:first-child {
+                color: $primary-color;
+              }
+              
+              &:last-child {
+                color: #ff4d4f;
+              }
+            }
+          }
+
+          &:hover {
+            background: #f8fafc !important;
+            
+            td {
+              background: transparent !important;
+            }
+          }
+        }
+      }
+    }
+
+    .ant-pagination {
+      padding: 16px;
+      margin: 0;
+      background: #f8fafc;
+    }
+  }
+
+  .ant-modal {
+    &-content {
+      border-radius: $border-radius;
+      overflow: hidden;
+    }
+
+    &-header {
+      background: #f8fafc;
+      border-bottom: 2px solid #f1f5f9;
+    }
+
+    &-title {
+      font-weight: 600;
+      color: $heading-color;
+    }
+
+    .ant-form-item {
+      margin-bottom: 16px;
+
+      &-label {
+        font-weight: 500;
+        padding-bottom: 4px;
+      }
+    }
+
+    .ant-input,
+    .ant-select-selector,
+    .ant-tree-select-selector {
+      border-radius: 6px;
+      padding: 8px 12px;
+    }
+
+    .ant-tree-select-dropdown {
+      .ant-select-tree-list-holder {
+        padding: 8px;
+      }
+
+      .ant-select-tree-node-content-wrapper {
+        padding: 8px;
+        border-radius: 4px;
+        transition: all 0.2s;
+
+        &:hover {
+          background: #f8fafc;
+        }
+      }
+    }
+  }
+
+  .status-tag {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: 12px;
+
+    &-active {
+      background: #f6ffed;
+      color: #52c41a;
+      border: 1px solid #b7eb8f;
+    }
+
+    &-inactive {
+      background: #fff1f0;
+      color: #ff4d4f;
+      border: 1px solid #ffa39e;
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .category-admin-view {
+    padding: 16px;
+
+    .page-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 16px;
+
+      h1 {
+        font-size: 20px;
+        padding-left: 12px;
+
+        &::before {
+          height: 20px;
+        }
+      }
+    }
+
+    .ant-table-wrapper {
+      overflow-x: auto;
+
+      .ant-table {
+        min-width: 800px;
+      }
+    }
+
+    .ant-modal {
+      width: 90% !important;
+      max-width: 100%;
+    }
+  }
+}

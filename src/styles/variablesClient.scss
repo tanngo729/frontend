@@ -1,0 +1,80 @@
+// src/styles/variables.scss
+
+// ========== Color System ========== //
+$primary-color: #dd4111;       // Màu chủ đạo (cập nhật theo logo)
+$secondary-color: #2baf90;     // Màu phụ
+$accent-color: #f1a512;        // Màu nhấn (vàng)
+$success-color: #a1d4b1;       // Màu thành công
+$error-color: #FF5252;         // Màu lỗi
+
+// Text Colors
+$text-color-primary: #2A2A2A;   // Chữ chính
+$text-color-secondary: #666666; // Chữ phụ
+$text-color-light: #999999;     // Chữ nhạt
+$text-on-primary: #FFFFFF;      // Chữ trên nền primary
+
+// Background Colors
+$background-light: #FFFFFF;
+$background-dark: #2A2A2A;
+$background-grey: #F8F9FA;
+
+// ========== Dimensions ========== //
+$header-height: 80px;          // Chiều cao header desktop
+$header-height-mobile: 60px;   // Chiều cao header mobile
+$sidebar-width: 280px;         // Chiều rộng sidebar
+
+// ========== Spacing ========== //
+$spacing-unit: 8px;
+$spacing-map: (
+  0: 0,
+  1: $spacing-unit,
+  2: $spacing-unit * 2,
+  3: $spacing-unit * 3,
+  4: $spacing-unit * 4,
+  5: $spacing-unit * 5,
+  6: $spacing-unit * 6,
+  8: $spacing-unit * 8,
+  10: $spacing-unit * 10,
+);
+
+// ========== Border & Shadow ========== //
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 16px;
+$border-radius-xl: 24px;
+$border-radius-circle: 50%;
+
+$border-color: #E0E0E0;
+$border-light: 1px solid $border-color;
+
+$box-shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+$box-shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+$box-shadow-lg: 0 10px 20px rgba(0,0,0,0.15);
+
+// ========== Typography ========== //
+$font-family-base: 'Inter', -apple-system, system-ui, sans-serif;
+$font-family-heading: 'Poppins', $font-family-base;
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+// ========== Transition ========== //
+$hover-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+// ========== Z-index ========== //
+$z-indexes: (
+  header: 1000,
+  dropdown: 1100,
+  modal: 1200,
+  notification: 1300
+);
+
+// ========== Breakpoints ========== //
+$breakpoints: (
+  xs: 480px,
+  sm: 640px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px
+);

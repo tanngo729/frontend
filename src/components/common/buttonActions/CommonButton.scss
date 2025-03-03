@@ -1,0 +1,37 @@
+@import '../../../styles/variables.scss';
+
+.common-button {
+  border-radius: $border-radius;
+  padding: 4px 8px;      // giảm padding so với trước
+  font-size: 12px;       // giảm kích thước chữ cho nhỏ gọn hơn
+  height: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;              // giảm khoảng cách giữa icon và text
+  font-weight: 500;
+  transition: all 0.2s;
+  cursor: pointer;
+  
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: $box-shadow;
+  }
+
+  &.common-button-primary {
+    background: $primary-color;
+    border-color: $primary-color;
+    color: #fff;
+  }
+
+  &.common-button-danger {
+    background: #fff1f0;
+    border-color: #ffa39e;
+    color: #cf1322;
+  }
+
+  &.common-button-edit {
+    background: #e6f7ff;
+    border-color: #91d5ff;
+    color: #1890ff;
+  }
+}

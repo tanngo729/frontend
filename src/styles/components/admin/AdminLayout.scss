@@ -1,0 +1,211 @@
+// AdminLayout.scss
+@import '../../variables.scss';
+
+.admin-layout {
+  min-height: 100vh;
+  position: relative;
+  // Xóa tất cả style liên quan đến submenu
+  .ant-menu-submenu,
+  .ant-menu-sub {
+    display: none !important;
+  }
+
+  // Điều chỉnh style cho menu item
+  .ant-menu-item {
+    margin: 4px 0 !important;
+    padding-left: 24px !important;
+    border-radius: 8px !important;
+    transition: all 0.2s !important;
+
+    &-selected {
+      background: rgba(255, 255, 255, 0.08) !important;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 60%;
+        width: 3px;
+        background: $primary-color;
+        border-radius: 0 2px 2px 0;
+      }
+
+      .anticon {
+        color: $primary-color !important;
+      }
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.05) !important;
+    }
+  }
+  // Mobile Toggle
+  .mobile-menu-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    display: none;
+    
+    @media (max-width: 991px) {
+      display: block;
+    }
+  }
+
+  // Mobile Overlay
+  .mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+  }
+
+  // Sidebar
+  .admin-sider {
+    background: #001529 !important;
+    height: 100vh;
+    position: fixed !important;
+    z-index: 1000;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
+
+    @media (max-width: 991px) {
+      transform: translateX(-100%);
+      &.visible {
+        transform: translateX(0);
+      }
+    }
+
+    .sider-header {
+      padding: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        transition: opacity 0.3s;
+
+        .logo {
+          height: 40px;
+          width: 40px;
+          object-fit: contain;
+        }
+
+        .logo-text {
+          color: white;
+          font-weight: 600;
+          font-size: 18px;
+          white-space: nowrap;
+        }
+      }
+
+      .sider-toggle {
+        position: absolute;
+        right: -20px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #fff;
+        border: 2px solid #f0f0f0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        
+        &:hover {
+          background: #f5f5f5 !important;
+        }
+      }
+    }
+
+    .ant-menu {
+      background: transparent;
+      border-right: 0;
+      padding: 16px 0;
+
+      &-item {
+        margin: 8px 0;
+        border-radius: 8px !important;
+        transition: all 0.2s !important;
+
+        &-selected {
+          background: rgba(255, 255, 255, 0.08) !important;
+          position: relative;
+
+          &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 60%;
+            width: 3px;
+            background: $primary-color;
+            border-radius: 0 2px 2px 0;
+          }
+
+          .anticon {
+            color: $primary-color !important;
+          }
+        }
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.05) !important;
+        }
+      }
+    }
+  }
+
+  // Main Content
+  .content-layout {
+    margin-left: 200px;
+    transition: margin 0.3s;
+
+    @media (max-width: 991px) {
+      margin-left: 0 !important;
+    }
+
+    .admin-header {
+      padding: 0 32px !important;
+      height: 64px;
+      background: #fff !important;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 900;
+
+      .header-content {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .page-title {
+          margin: 0;
+          font-size: 20px;
+          font-weight: 600;
+          color: $heading-color;
+        }
+
+        .logout-btn {
+          height: 40px;
+          padding: 0 20px;
+          border-radius: 8px;
+        }
+      }
+    }
+
+    .admin-content {
+      padding: 24px;
+      min-height: calc(100vh - 64px);
+
+      @media (max-width: 767px) {
+        padding: 16px;
+      }
+    }
+  }
+}

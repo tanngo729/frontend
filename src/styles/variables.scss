@@ -1,0 +1,27 @@
+// src/styles/variables.scss
+$border-radius-base: 4px;
+
+// Colors
+$primary-color: #1890ff;
+$heading-color: rgba(0, 0, 0, 0.85);
+$text-color: rgba(0, 0, 0, 0.65);
+$text-color-secondary: rgba(0, 0, 0, 0.45);
+
+// Dimensions
+$header-height: 64px;
+$sidebar-width: 200px;
+
+// Spacing
+$spacing-unit: 16px;
+
+// Border
+$border-radius: 8px;
+$border-color: #d9d9d9;
+
+// Shadow
+$box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+$button-primary-hover: darken($primary-color, 10%);
+$button-secondary-bg: rgba($primary-color, 0.1);
+$button-secondary-border: rgba($primary-color, 0.2);
+

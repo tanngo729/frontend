@@ -1,0 +1,149 @@
+@import '../../../styles/variables.scss';
+
+.admin-product-detail {
+  padding: 10px;
+  background: #f8fafc;
+  min-height: calc(100vh - 64px);
+
+  .ant-card {
+    max-width: 800px;
+    margin: 20px auto;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    overflow: hidden;
+
+    &-head {
+      background: #f8fafc;
+      border-bottom: 2px solid #f1f5f9;
+      padding: 16px 24px;
+
+      &-title {
+        font-size: 20px;
+        font-weight: 600;
+        color: $heading-color;
+        display: flex;
+        align-items: center;
+
+        &::before {
+          content: '';
+          display: inline-block;
+          width: 4px;
+          height: 24px;
+          background: $primary-color;
+          margin-right: 12px;
+          border-radius: 2px;
+        }
+      }
+
+      // Các style của .ant-btn đã được loại bỏ để sử dụng CommonButton
+    }
+
+    &-body {
+      padding: 24px;
+
+      .ant-image {
+        width: 100%;
+        margin-bottom: 24px;
+        border-radius: $border-radius;
+        overflow: hidden;
+        border: 1px solid #f1f5f9;
+        box-shadow: $box-shadow;
+
+        img {
+          object-fit: cover;
+          width: 100%;
+          height: 400px;
+        }
+      }
+
+      p {
+        margin-bottom: 16px;
+        font-size: 16px;
+        line-height: 1.6;
+        color: $text-color;
+
+        strong {
+          color: $heading-color;
+          font-weight: 600;
+          min-width: 120px;
+          display: inline-block;
+        }
+
+        .ant-tag {
+          font-size: 14px;
+          padding: 6px 12px;
+          border-radius: 20px;
+          border: none;
+          font-weight: 500;
+          margin-left: 8px;
+
+          &-success {
+            background: #f6ffed;
+            color: $primary-color;
+          }
+
+          &-error {
+            background: #fff1f0;
+            color: #ff4d4f;
+          }
+        }
+      }
+
+      .price-highlight {
+        color: #1890ff;
+        font-size: 24px;
+        font-weight: 700;
+        margin-left: 8px;
+      }
+
+      .position-badge {
+        display: inline-block;
+        padding: 4px 12px;
+        background: #e6f7ff;
+        color: $primary-color;
+        border-radius: 20px;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .admin-product-detail {
+    padding: 16px;
+
+    .ant-card {
+      margin: 0;
+
+      &-head {
+        padding: 12px 16px;
+
+        &-title {
+          font-size: 18px;
+        }
+      }
+
+      &-body {
+        padding: 16px;
+
+        .ant-image img {
+          height: 250px;
+        }
+
+        p {
+          font-size: 14px;
+
+          strong {
+            display: block;
+            margin-bottom: 4px;
+          }
+        }
+
+        .price-highlight {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
