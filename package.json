@@ -13,7 +13,6 @@
     "cra-template": "1.2.0",
     "nodemon": "^3.1.9",
     "react": "^19.0.0",
-    "react-beautiful-dnd": "^13.1.1",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.1.5",
     "react-scripts": "5.0.1",
@@ -50,5 +49,13 @@
   "main": "index.js",
   "author": "",
   "license": "ISC",
-  "description": "��#\u0000 \u0000f\u0000r\u0000o\u0000n\u0000t\u0000e\u0000n\u0000d\u0000\r\u0000 \u0000"
+  "description": "��#\u0000 \u0000f\u0000r\u0000o\u0000n\u0000t\u0000e\u0000n\u0000d\u0000\r\u0000 \u0000",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tanngo729/frontend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tanngo729/frontend/issues"
+  },
+  "homepage": "https://github.com/tanngo729/frontend#readme"
 }
