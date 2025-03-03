@@ -1,8 +1,7 @@
 // frontend/src/services/productService.js
 import axios from 'axios';
 
-// const API_BASE_URL = 'https://backend-production-d68fa.up.railway.app';
-const API_BASE_URL = 'http://localhost:5000';
+import API_BASE_URL from '../../config/api';
 
 const productService = {
   getProductsClient: async () => {
