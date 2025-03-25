@@ -1,0 +1,232 @@
+/* src/styles/client/order/UserOrdersPage.scss */
+@import '../variablesClient.scss';
+
+.user-orders-page {
+  padding: map-get($spacing-map, 4);
+  background-color: $background-grey;
+  min-height: 80vh;
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: map-get($spacing-map, 4);
+
+    h2 {
+      margin-bottom: 0;
+      color: $text-color-primary;
+      // font-family: $font-family-heading;
+      font-weight: $font-weight-bold;
+    }
+
+    // Làm nhạt màu nút "Tiếp tục mua sắm"
+    .shop-more-btn, .ant-btn-primary {
+      // Trộn màu primary với màu trắng để tạo màu nhạt hơn
+      background-color: rgba($primary-color, 0.85);
+      border-color: rgba($primary-color, 0.85);
+      transition: $hover-transition;
+
+      &:hover {
+        background-color: rgba($primary-color, 0.9);
+        border-color: rgba($primary-color, 0.9);
+      }
+    }
+
+    @media (max-width: map-get($breakpoints, sm)) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: map-get($spacing-map, 2);
+
+      h2 {
+        margin-bottom: map-get($spacing-map, 2);
+      }
+    }
+  }
+
+  // Table styling
+  .orders-table {
+    background-color: $background-light;
+    border-radius: $border-radius-md;
+    box-shadow: $box-shadow-sm;
+    overflow: hidden;
+
+    .ant-table-thead > tr > th {
+      // Làm nhạt màu background của header bảng
+      background-color: rgba($primary-color, 0.03);
+      color: $text-color-primary;
+      font-weight: $font-weight-medium;
+    }
+
+    .ant-table-tbody > tr > td {
+      border-bottom: $border-light;
+    }
+
+    .ant-table-tbody > tr:hover > td {
+      background-color: rgba($primary-color, 0.02);
+    }
+
+    // Order status tags
+    .ant-tag {
+      border-radius: $border-radius-sm;
+      padding: map-get($spacing-map, 1) map-get($spacing-map, 2);
+      font-weight: $font-weight-medium;
+      border: none;
+    }
+
+    // Action buttons
+    .ant-btn {
+      border-radius: $border-radius-sm;
+      font-weight: $font-weight-medium;
+      font-size: map-get($font-sizes, sm);
+      
+      // Làm nhạt màu nút "Xem chi tiết"
+      &.view-detail-btn, &-primary {
+        // Trộn màu primary với màu trắng để tạo màu nhạt hơn
+        background-color: rgba($primary-color, 0.85);
+        border-color: rgba($primary-color, 0.85);
+        
+        &:hover {
+          background-color: rgba($primary-color, 0.9);
+          border-color: rgba($primary-color, 0.9);
+        }
+      }
+      
+      // Giữ nguyên kiểu outline cho nút "Hủy đơn"
+      &.cancel-order-btn, &-danger {
+        background-color: transparent;
+        border-color: $error-color;
+        color: $error-color;
+        
+        &:hover {
+          background-color: rgba($error-color, 0.05);
+          border-color: $error-color;
+          color: $error-color;
+        }
+        
+        // Khi nút đang trong trạng thái loading
+        &[disabled], &[disabled]:hover {
+          background-color: transparent;
+          border-color: rgba($error-color, 0.5);
+          color: rgba($error-color, 0.5);
+        }
+      }
+    }
+
+    // Clickable order ID
+    a {
+      // Làm nhạt màu link ID đơn hàng
+      color: rgba($primary-color, 0.85);
+      font-weight: $font-weight-medium;
+      text-decoration: none;
+      transition: $hover-transition;
+      
+      &:hover {
+        color: $primary-color;
+        text-decoration: underline;
+      }
+    }
+
+    @media (max-width: map-get($breakpoints, md)) {
+      .ant-table {
+        font-size: map-get($font-sizes, sm);
+      }
+    }
+  }
+
+  // Loading container
+  .loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: map-get($spacing-map, 5);
+    min-height: 300px;
+
+    .ant-spin {
+      margin-bottom: map-get($spacing-map, 3);
+      
+      // Làm nhạt màu spinner
+      .ant-spin-dot-item {
+        background-color: rgba($primary-color, 0.85);
+      }
+    }
+  }
+
+  // Empty orders container
+  .empty-orders {
+    text-align: center;
+    padding: map-get($spacing-map, 6);
+    background-color: $background-light;
+    border-radius: $border-radius-md;
+    box-shadow: $box-shadow-sm;
+
+    p {
+      font-size: map-get($font-sizes, lg);
+      color: $text-color-secondary;
+      margin-bottom: map-get($spacing-map, 4);
+    }
+
+    // Làm nhạt màu nút "Mua sắm ngay"
+    .shop-now-btn, .ant-btn-primary {
+      background-color: rgba($primary-color, 0.85);
+      border-color: rgba($primary-color, 0.85);
+      font-weight: $font-weight-medium;
+      padding: map-get($spacing-map, 1) map-get($spacing-map, 3);
+      height: auto;
+      
+      &:hover {
+        background-color: rgba($primary-color, 0.9);
+        border-color: rgba($primary-color, 0.9);
+      }
+    }
+  }
+
+  // Responsive adjustments
+  @media (max-width: map-get($breakpoints, md)) {
+    padding: map-get($spacing-map, 2);
+  }
+}
+
+// Tùy chỉnh modal xác nhận hủy đơn hàng
+.ant-modal-confirm {
+  .ant-modal-confirm-body-wrapper {
+    .ant-modal-confirm-title {
+      color: $text-color-primary;
+      font-weight: $font-weight-bold;
+    }
+    
+    .ant-modal-confirm-content {
+      color: $text-color-secondary;
+      margin-top: map-get($spacing-map, 2);
+    }
+    
+    .ant-modal-confirm-btns {
+      // Làm nhạt màu nút xác nhận trong modal
+      .ant-btn-primary {
+        background-color: $error-color;
+        border-color: $error-color;
+        
+        &:hover {
+          background-color: darken($error-color, 10%);
+          border-color: darken($error-color, 10%);
+        }
+        
+        // Khi nút đang trong trạng thái loading
+        &[disabled], &[disabled]:hover {
+          background-color: rgba($error-color, 0.5);
+          border-color: rgba($error-color, 0.5);
+        }
+      }
+      
+      .ant-btn-default {
+        border-color: $border-color;
+        color: $text-color-secondary;
+        
+        &:hover {
+          border-color: rgba($primary-color, 0.85);
+          color: rgba($primary-color, 0.85);
+        }
+      }
+    }
+  }
+}

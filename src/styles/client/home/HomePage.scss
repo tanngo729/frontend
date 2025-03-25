@@ -1,0 +1,87 @@
+@import '../variablesClient.scss';
+
+.home-page-container {
+  padding: map-get($spacing-map, 2);
+  
+  @media (min-width: map-get($breakpoints, md)) {
+    padding: map-get($spacing-map, 4);
+  }
+
+  .search-section {
+    margin: map-get($spacing-map, 3) auto;
+    max-width: 800px;
+    position: relative;
+    
+    .search-input {
+      width: 100%;
+      padding-right: 40px;
+    }
+    
+    .search-button {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      border-radius: 0 $border-radius-sm $border-radius-sm 0;
+    }
+    
+    @media (max-width: map-get($breakpoints, sm)) {
+      margin: map-get($spacing-map, 2) 0;
+    }
+  }
+
+  .home-banner-carousel {
+    margin-bottom: map-get($spacing-map, 4);
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+
+    .banner-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      
+      @media (min-width: map-get($breakpoints, sm)) {
+        height: 250px;
+      }
+      
+      @media (min-width: map-get($breakpoints, md)) {
+        height: 400px;
+      }
+    }
+  }
+
+  .product-section {
+    margin-bottom: map-get($spacing-map, 4);
+
+    h2 {
+      font-size: 1.2rem;
+      padding-bottom: map-get($spacing-map, 2);
+      border-bottom: 2px solid $primary-color;
+      
+      @media (min-width: map-get($breakpoints, sm)) {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+.full-page-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  
+  .ant-spin {
+    color: $primary-color;
+    
+    &-dot {
+      margin-bottom: 1rem;
+      color: $primary-color;
+    }
+    
+    &-text {
+      font-size: 1.2rem;
+      color: $primary-color;
+    }
+  }
+}

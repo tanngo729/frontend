@@ -1,0 +1,133 @@
+/* src/styles/client/order/OrderDetailView.scss */
+@import '../variablesClient.scss';
+
+.order-detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: map-get($spacing-map, 3);
+}
+
+.order-header {
+  margin-bottom: map-get($spacing-map, 3);
+}
+
+.status-tag {
+  font-size: map-get($font-sizes, sm);
+  padding: map-get($spacing-map, 1) map-get($spacing-map, 2);
+  border-radius: $border-radius-sm;
+}
+
+.order-progress-card {
+  margin-bottom: map-get($spacing-map, 3);
+  border-radius: $border-radius-md;
+  box-shadow: $box-shadow-sm;
+}
+
+.order-steps {
+  padding: map-get($spacing-map, 2) 0;
+}
+
+.cancelled-alert {
+  margin-bottom: map-get($spacing-map, 3);
+  border-radius: $border-radius-md;
+}
+
+.product-card,
+.timeline-card,
+.order-info-card,
+.shipping-info-card {
+  margin-bottom: map-get($spacing-map, 3);
+  border-radius: $border-radius-md;
+  box-shadow: $box-shadow-sm;
+}
+
+.product-item {
+  padding: map-get($spacing-map, 1) 0;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.payment-instructions,
+.tracking-info {
+  margin-top: map-get($spacing-map, 2);
+}
+
+.order-actions {
+  display: flex;
+  flex-direction: column;
+  gap: map-get($spacing-map, 2);
+}
+
+.cancel-button {
+  margin-bottom: map-get($spacing-map, 1);
+  background-color: $error-color;
+  border-color: $error-color;
+}
+
+.back-button {
+  margin-top: map-get($spacing-map, 1);
+  color: $text-color-primary;
+}
+
+.loading-container,
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: map-get($spacing-map, 5);
+  text-align: center;
+}
+
+// Typography
+.order-detail-container {
+  h2 {
+    // font-family: $font-family-heading;
+    font-weight: $font-weight-bold;
+    color: $text-color-primary;
+  }
+
+  .ant-descriptions-item-label {
+    font-weight: $font-weight-medium;
+    color: $text-color-secondary;
+  }
+
+  .ant-descriptions-item-content {
+    color: $text-color-primary;
+  }
+}
+
+// Product details
+.product-item {
+  .ant-typography {
+    &.ant-typography-secondary {
+      color: $text-color-secondary;
+    }
+  }
+}
+
+// Timeline customization
+.timeline-card {
+  .ant-timeline-item-content {
+    strong {
+      color: $text-color-primary;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: map-get($breakpoints, md)) {
+  .order-detail-container {
+    padding: map-get($spacing-map, 2);
+  }
+  
+  .order-steps {
+    padding: 0;
+  }
+  
+  .product-item {
+    padding: map-get($spacing-map, 2) 0;
+  }
+}

@@ -1,0 +1,229 @@
+/* src/styles/client/checkout/CheckoutPage.scss */
+@import '../variablesClient.scss';
+
+.checkout-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: map-get($spacing-map, 4);
+  background-color: $background-light;
+  border-radius: $border-radius-md;
+  box-shadow: $box-shadow-md;
+
+  @media (max-width: map-get($breakpoints, md)) {
+    padding: map-get($spacing-map, 2);
+    border-radius: $border-radius-sm;
+  }
+
+  // Checkout Steps Styling
+  .checkout-steps {
+    margin-bottom: map-get($spacing-map, 4);
+
+    .ant-steps-item {
+      &-icon {
+        background-color: $background-light;
+        border-color: $primary-color;
+      }
+
+      &-title {
+        color: $text-color-secondary;
+        font-weight: $font-weight-medium;
+      }
+
+      &-process .ant-steps-item-icon {
+        background-color: $primary-color;
+        border-color: $primary-color;
+      }
+
+      &-finish {
+        .ant-steps-item-icon {
+          background-color: $primary-color;
+          border-color: $primary-color;
+        }
+        .ant-steps-item-title {
+          color: $text-color-primary;
+        }
+      }
+
+      &-active .ant-steps-item-title {
+        color: $text-color-primary;
+      }
+    }
+  }
+
+  // Checkout Content
+  .checkout-content {
+    max-width: 800px;
+    margin: 0 auto;
+
+    // Form styling
+    .checkout-form {
+      background-color: $background-light;
+      padding: map-get($spacing-map, 4);
+      border-radius: $border-radius-md;
+      margin-bottom: map-get($spacing-map, 4);
+      border: $border-light;
+
+      .ant-form-item-label > label {
+        color: $text-color-primary;
+        font-weight: $font-weight-medium;
+      }
+
+      .ant-input, .ant-input-number, .ant-select-selector, .ant-picker {
+        border-radius: $border-radius-sm;
+        border: $border-light;
+        transition: $hover-transition;
+
+        &:hover, &:focus {
+          border-color: $primary-color;
+          box-shadow: 0 0 0 2px rgba($primary-color, 0.1);
+        }
+      }
+
+      .ant-input-textarea {
+        resize: vertical;
+      }
+    }
+
+    // Payment methods styling
+    .payment-section {
+      margin-bottom: map-get($spacing-map, 4);
+
+      h4 {
+        color: $text-color-primary;
+        font-weight: $font-weight-bold;
+        margin-bottom: map-get($spacing-map, 3);
+      }
+
+      .payment-methods {
+        display: flex;
+        flex-direction: column;
+        gap: map-get($spacing-map, 2);
+
+        .ant-radio-group {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: map-get($spacing-map, 2);
+        }
+
+        .ant-radio-button-wrapper {
+          display: block;
+          width: 100%;
+          height: auto;
+          padding: map-get($spacing-map, 3);
+          border-radius: $border-radius-md;
+          border: $border-light;
+          margin-right: 0;
+          transition: $hover-transition;
+
+          &::before {
+            display: none; // Remove the default separator line
+          }
+
+          &:first-child, &:last-child {
+            border-radius: $border-radius-md;
+          }
+
+          &:hover {
+            border-color: $primary-color;
+          }
+
+          &-checked {
+            border-color: $primary-color;
+            background-color: rgba($primary-color, 0.05);
+            color: $primary-color;
+          }
+
+          .method-content {
+            display: flex;
+            align-items: center;
+            gap: map-get($spacing-map, 3);
+
+            img {
+              width: 40px;
+              height: 40px;
+              object-fit: contain;
+            }
+
+            .method-info {
+              h4 {
+                margin: 0 0 map-get($spacing-map, 1) 0;
+                font-weight: $font-weight-medium;
+                color: $text-color-primary;
+              }
+
+              p {
+                margin: 0;
+                color: $text-color-secondary;
+                font-size: map-get($font-sizes, sm);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // Form actions
+    .form-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: map-get($spacing-map, 4);
+
+      .ant-btn {
+        padding: map-get($spacing-map, 1) map-get($spacing-map, 3);
+        height: auto;
+        font-weight: $font-weight-medium;
+        border-radius: $border-radius-sm;
+        transition: $hover-transition;
+
+        &-primary {
+          background-color: $primary-color;
+          border-color: $primary-color;
+
+          &:hover {
+            background-color: darken($primary-color, 10%);
+            border-color: darken($primary-color, 10%);
+          }
+        }
+
+        &:not(.ant-btn-primary) {
+          border-color: $border-color;
+          color: $text-color-primary;
+
+          &:hover {
+            color: $primary-color;
+            border-color: $primary-color;
+          }
+        }
+      }
+
+      @media (max-width: map-get($breakpoints, sm)) {
+        flex-direction: column-reverse;
+        gap: map-get($spacing-map, 2);
+
+        .ant-btn {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+// Loading container
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  padding: map-get($spacing-map, 5);
+
+  .ant-spin {
+    margin-bottom: map-get($spacing-map, 3);
+  }
+
+  p {
+    color: $text-color-secondary;
+    font-size: map-get($font-sizes, base);
+  }
+}

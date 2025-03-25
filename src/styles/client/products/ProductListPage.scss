@@ -1,0 +1,176 @@
+@import '../variablesClient.scss';
+
+.product-list-page {
+  padding: map-get($spacing-map, 2);
+  
+  @media (min-width: map-get($breakpoints, md)) {
+    padding: map-get($spacing-map, 4);
+  }
+  
+  .product-list-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: map-get($spacing-map, 4);
+    
+    @media (min-width: map-get($breakpoints, md)) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    h1 {
+      font-size: 1.5rem;
+      margin: 0;
+      margin-bottom: map-get($spacing-map, 2);
+      color: $text-color-primary;
+      
+      @media (min-width: map-get($breakpoints, sm)) {
+        font-size: 1.8rem;
+        margin-bottom: 0;
+      }
+      
+      @media (min-width: map-get($breakpoints, lg)) {
+        font-size: 2rem;
+      }
+    }
+    
+    .product-list-actions {
+      display: flex;
+      gap: map-get($spacing-map, 2);
+      align-items: center;
+      width: 100%;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      
+      @media (min-width: map-get($breakpoints, md)) {
+        width: auto;
+        justify-content: flex-end;
+      }
+      
+      .filter-toggle-btn {
+        background-color: #fff !important;
+        border-color: #fff !important;
+        color: $text-color-primary !important;
+        
+        &:hover,
+        &:focus {
+          background-color: #f8f8f8 !important;
+          border-color: #f8f8f8 !important;
+          color: $text-color-primary !important;
+    }
+        @media (min-width: map-get($breakpoints, lg)) {
+          display: none;
+        }
+      }
+      
+      .view-mode-buttons {
+        display: flex;
+        gap: 4px;
+        
+        .ant-btn {
+          padding: 0 8px;
+          height: 32px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+   
+  .active-filters {
+    margin-bottom: map-get($spacing-map, 3);
+    background-color: rgba($background-grey, 0.6);
+    padding: map-get($spacing-map, 2);
+    border-radius: $border-radius-md;
+    display: flex;
+    flex-direction: column;
+    gap: map-get($spacing-map, 2);
+    
+    @media (min-width: map-get($breakpoints, md)) {
+      flex-direction: row;
+      align-items: center;
+    }
+    
+    .ant-space {
+      width: 100%;
+    }
+    
+    .ant-tag {
+      margin-right: map-get($spacing-map, 1);
+      margin-bottom: map-get($spacing-map, 1);
+      border-radius: $border-radius-md;
+      padding: 4px 8px;
+      
+      .anticon-close {
+        color: inherit;
+        margin-left: 6px;
+      }
+      
+      &:hover {
+        opacity: 0.85;
+      }
+    }
+    
+    .ant-btn {
+      height: 24px;
+      padding: 0 8px;
+      border-radius: $border-radius-md;
+      
+      .anticon {
+        font-size: 12px;
+      }
+    }
+  }
+  
+  .product-list-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: map-get($spacing-map, 4);
+    
+    &.with-sidebar {
+      @media (min-width: map-get($breakpoints, lg)) {
+        grid-template-columns: 240px 1fr;
+      }
+    }
+    
+    .sidebar-container {
+      display: none;
+      
+      @media (min-width: map-get($breakpoints, lg)) {
+        display: block;
+      }
+    }
+  }
+  
+  .ant-drawer {
+    .ant-drawer-content-wrapper {
+      width: 280px !important;
+      
+      @media (min-width: map-get($breakpoints, sm)) {
+        width: 320px !important;
+      }
+    }
+    
+    .ant-drawer-header {
+      border-bottom: $border-light;
+      padding: map-get($spacing-map, 2) map-get($spacing-map, 3);
+      
+      .ant-drawer-title {
+        color: $text-color-primary;
+        font-weight: $font-weight-bold;
+      }
+    }
+    
+    .ant-drawer-body {
+      padding: map-get($spacing-map, 2);
+      
+      .filter-sidebar {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+      }
+    }
+  }
+}

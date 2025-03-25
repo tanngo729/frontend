@@ -1,0 +1,175 @@
+// SettingPage.scss
+@import './variables.scss';
+
+.settings-page {
+  padding: 24px;
+  background: #f8fafc;
+  min-height: calc(100vh - 64px);
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: $heading-color;
+    margin-bottom: 32px;
+    padding-left: 24px;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 28px;
+      background: $primary-color;
+      border-radius: 2px;
+    }
+  }
+
+  .settings-group {
+    margin-bottom: 32px;
+    background: white;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    padding: 24px;
+    transition: all 0.3s;
+
+    &:hover {
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: $heading-color;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #f1f5f9;
+      display: flex;
+      align-items: center;
+
+      &::before {
+        content: '';
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        background: $primary-color;
+        border-radius: 50%;
+        margin-right: 12px;
+      }
+    }
+
+    .ant-card {
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      height: 100%;
+      border: 1px solid #f1f5f9;
+
+      &-hoverable:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+      }
+
+      &-head {
+        background: linear-gradient(135deg, rgba($primary-color, 0.1) 0%, rgba($primary-color, 0.05) 100%);
+        border-bottom: none;
+        padding: 16px 24px;
+
+        &-title {
+          font-weight: 500;
+          color: $heading-color;
+          padding: 0 !important;
+
+          &::after {
+            content: '›';
+            margin-left: 8px;
+            color: $primary-color;
+            font-size: 1.2em;
+            transition: transform 0.2s;
+          }
+        }
+      }
+
+      &-body {
+        padding: 16px 24px 24px;
+        
+        p {
+          color: $text-color-secondary;
+          margin: 0;
+          line-height: 1.6;
+          font-size: 0.9em;
+        }
+      }
+    }
+
+    // Different colors for different groups
+    &[data-group="account"] .ant-card-head {
+      background: linear-gradient(135deg, rgba(66, 153, 225, 0.1) 0%, rgba(66, 153, 225, 0.05) 100%);
+    }
+
+    &[data-group="system"] .ant-card-head {
+      background: linear-gradient(135deg, rgba(72, 187, 120, 0.1) 0%, rgba(72, 187, 120, 0.05) 100%);
+    }
+  }
+
+  .ant-row {
+    margin: -8px;
+    
+    > div {
+      padding: 8px;
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .settings-page {
+    padding: 16px;
+    
+    h1 {
+      font-size: 1.5rem;
+      padding-left: 16px;
+      margin-bottom: 24px;
+      
+      &::before {
+        height: 24px;
+      }
+    }
+    
+    .settings-group {
+      padding: 16px;
+      
+      h2 {
+        font-size: 1.1rem;
+        margin-bottom: 16px;
+      }
+      
+      .ant-card {
+        &-head {
+          padding: 12px 16px;
+          
+          &-title {
+            font-size: 0.9rem;
+          }
+        }
+        
+        &-body {
+          padding: 12px 16px 16px;
+          
+          p {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Hover effects
+@keyframes cardHover {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+  100% { transform: translateY(-4px); }
+}

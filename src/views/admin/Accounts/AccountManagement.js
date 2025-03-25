@@ -2,13 +2,13 @@
 import React, { useState, useEffect } from 'react';
 import { Space, Input, Select, Modal, message, Spin } from 'antd';
 
-import AdminLayout from '../../../components/layout/AdminLayout';
+import AdminLayout from '../../../components/layout/admin/AdminLayout';
 import accountService from '../../../services/admin/accountService';
 import roleService from '../../../services/admin/roleService';
 import UserTable from './users/UserTable';
 import UserForm from './users/UserForm';
 import AddNewButton from '../../../components/common/AddNewButton/AddNewButton';
-import '../../../styles/components/admin/AccountManagement.scss';
+import '../../../styles/admin/AccountManagement.scss';
 
 const { Option } = Select;
 const { Search } = Input;

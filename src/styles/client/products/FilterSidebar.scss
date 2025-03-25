@@ -1,0 +1,219 @@
+@import '../variablesClient.scss';
+
+.filter-sidebar {
+  width: 260px;
+  padding: map-get($spacing-map, 2);
+  border-radius: $border-radius-lg;
+  background-color: $background-light;
+  height: fit-content;
+  box-shadow: $box-shadow-sm;
+  border: $border-light;
+  transition: $hover-transition;
+
+  &:hover {
+    box-shadow: $box-shadow-md;
+  }
+
+  .filter-section {
+    margin-bottom: map-get($spacing-map, 4);
+    position: relative;
+    
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -map-get($spacing-unit, 2);
+      height: 1px;
+      background-color: rgba($border-color, 0.5);
+    }
+    
+    &:last-child {
+      margin-bottom: 0;
+      
+      &:after {
+        display: none;
+      }
+    }
+    
+    h3 {
+      font-size: 1rem;
+      font-weight: $font-weight-bold;
+      margin-bottom: map-get($spacing-map, 3);
+      color: $text-color-primary;
+      position: relative;
+      padding-left: map-get($spacing-map, 2);
+      
+      &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 16px;
+        background-color: $primary-color;
+        border-radius: $border-radius-sm;
+      }
+    }
+
+    .ant-select {
+      width: 100%;
+      
+      .ant-select-selector {
+        border-radius: $border-radius-md;
+        border-color: $border-color;
+        
+        &:hover {
+          border-color: $primary-color;
+        }
+      }
+    }
+
+    .ant-slider {
+      margin: map-get($spacing-map, 2) 0 map-get($spacing-map, 3);
+      
+      .ant-slider-track {
+        background-color: $primary-color;
+      }
+      
+      .ant-slider-handle {
+        border-color: $primary-color;
+        
+        &:focus {
+          box-shadow: 0 0 0 5px rgba($primary-color, 0.2);
+        }
+      }
+    }
+
+    .price-range-display {
+      display: flex;
+      justify-content: space-between;
+      margin: map-get($spacing-map, 2) 0;
+      color: $text-color-secondary;
+      font-size: 0.9rem;
+      background-color: rgba($background-grey, 0.5);
+      padding: map-get($spacing-map, 1);
+      border-radius: $border-radius-md;
+    }
+
+    .ant-radio-group {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: map-get($spacing-map, 1);
+      
+      .ant-radio-button-wrapper {
+        height: 32px;
+        line-height: 30px;
+        padding: 0 map-get($spacing-map, 2);
+        border-radius: $border-radius-md !important;
+        margin-right: map-get($spacing-map, 1);
+        margin-bottom: map-get($spacing-map, 1);
+        border-left-width: 1px !important;
+        
+        &:before {
+          display: none;
+        }
+        
+        &:first-child {
+          border-left-width: 1px !important;
+        }
+        
+        &.ant-radio-button-wrapper-checked {
+          border-color: $primary-color;
+          color: $primary-color;
+          
+          &:hover {
+            color: $primary-color;
+            border-color: $primary-color;
+          }
+        }
+        
+        &:hover {
+          color: $primary-color;
+          border-color: $primary-color;
+        }
+      }
+    }
+  }
+
+  .filter-actions {
+    display: flex;
+    flex-direction: column;
+    gap: map-get($spacing-map, 2);
+    margin-top: map-get($spacing-map, 4);
+    
+    .ant-btn {
+      height: 38px;
+      border-radius: $border-radius-md;
+      font-weight: $font-weight-medium;
+      
+      &-primary {
+        background-color: $primary-color;
+        border-color: $primary-color;
+        
+        &:hover,
+        &:focus {
+          background-color: darken($primary-color, 10%);
+          border-color: darken($primary-color, 10%);
+        }
+      }
+      
+      &:not(.ant-btn-primary) {
+        border-color: $border-color;
+        color: $text-color-secondary;
+        
+        &:hover {
+          border-color: $primary-color;
+          color: $primary-color;
+        }
+      }
+    }
+  }
+
+  // ===== Mobile Styles ===== //
+  &.mobile-view {  
+    padding: map-get($spacing-map, 2);
+    height: auto;  
+    overflow-y: auto;
+    border: none; // Loại bỏ border trên mobile
+    
+    .filter-section {
+      margin-bottom: map-get($spacing-map, 4);
+      background: $background-light;
+      border-radius: $border-radius-md;
+      
+      &:after {
+        display: none;
+      }
+  
+      h3 {
+        font-size: 15px;
+        padding-left: 12px;
+  
+        &:before {
+          width: 3px;
+          height: 14px;
+        }
+      }
+  
+      .ant-radio-group {
+        flex-direction: column;
+  
+        .ant-radio-button-wrapper {
+          width: 100%;
+          text-align: center;
+          // margin-bottom: map-get($spacing-map, 1);
+        }
+      }
+    }
+  
+    .filter-actions {
+      // margin-top: map-get($spacing-map, 1);
+      background: $background-light;
+      padding: 16px;
+      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+    }
+  }
+}

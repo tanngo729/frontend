@@ -1,5 +1,5 @@
-// src/config/api.js
-// const API_BASE_URL = 'http://localhost:5000';
-const API_BASE_URL = 'https://backend-production-d68fa.up.railway.app';
-
-export default API_BASE_URL;
+const API_URL = {
+  base: process.env.REACT_APP_API_URL || 'http://localhost:5000',
+  admin: '/admin'
+};
+export default API_URL;

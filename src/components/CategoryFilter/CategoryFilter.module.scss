@@ -1,0 +1,56 @@
+@import '../../styles/client/variablesClient.scss';
+
+/* Container hiển thị trạng thái loading */
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: map-get($spacing-map, 2);
+}
+
+/* Giao diện Vertical: dùng Select */
+.verticalCategoryFilter {
+  .categorySelect {
+    width: 100%;
+  }
+  
+  .selectOptionContent {
+    display: flex;
+    align-items: center;
+    padding: map-get($spacing-map, 1);
+  }
+  
+  .categoryName {
+    font-size: 1rem;
+    color: $text-color-primary;
+  }
+}
+
+/* Giao diện Horizontal: hiển thị dạng thẻ */
+.horizontalCategoryFilter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: map-get($spacing-map, 1);
+  
+  .categoryCard {
+    padding: map-get($spacing-map, 1);
+    border: $border-light;
+    border-radius: $border-radius-md;
+    cursor: pointer;
+    transition: $hover-transition;
+    
+    &:hover {
+      box-shadow: $box-shadow-sm;
+    }
+    
+    .name {
+      font-size: 0.9rem;
+      color: $text-color-primary;
+    }
+  }
+  
+  .selected {
+    border-color: $primary-color;
+    background-color: lighten($primary-color, 40%);
+  }
+}

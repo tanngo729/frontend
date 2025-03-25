@@ -1,5 +1,4 @@
-// src/services/admin/permissionService.js
-import axios from '../axiosInstance';
+import axios from './adminAxiosInstance';
 
 const permissionService = {
   getPermissions: async () => axios.get('/admin/permissions'),

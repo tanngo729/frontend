@@ -1,0 +1,462 @@
+// src/styles/client/cart/CartPage.scss
+@import '../variablesClient.scss';
+
+.cart-container {
+  margin: map-get($spacing-map, 3) map-get($spacing-map, 2);
+}
+
+.cart-header {
+  margin-bottom: map-get($spacing-map, 3);
+  
+  h2 {
+    display: flex;
+    align-items: center;
+    margin-left: map-get($spacing-map, 2);
+    gap: map-get($spacing-map, 2);
+    color: $text-color-primary;
+    font-weight: $font-weight-bold;
+  }
+}
+
+.cart-page {
+  padding: map-get($spacing-map, 4);
+  background-color: $background-light;
+  border-radius: $border-radius-md;
+  box-shadow: $box-shadow-sm;
+  transition: $hover-transition;
+
+  &__no-user {
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: map-get($spacing-map, 4);
+    background-color: $background-grey;
+    border-radius: $border-radius-md;
+    margin: map-get($spacing-map, 4) 0;
+    color: $text-color-primary;
+    
+    .empty-cart-icon {
+      font-size: 48px;
+      margin-bottom: map-get($spacing-map, 3);
+      color: $primary-color;
+    }
+  }
+
+  &__summary {
+    margin-top: map-get($spacing-map, 4);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: map-get($spacing-map, 3);
+    border-top: $border-light;
+    gap: map-get($spacing-map, 3);
+    
+    .cart-summary-info {
+      flex: 1;
+      
+      h4 {
+        margin-bottom: 0;
+        font-weight: $font-weight-bold;
+        color: $text-color-primary;
+        font-family: $font-family-heading;
+        
+        .total-price {
+          color: $primary-color;
+          font-size: map-get($font-sizes, lg);
+        }
+      }
+    }
+    
+    .cart-actions {
+      display: flex;
+      gap: map-get($spacing-map, 2);
+      
+      .checkout-btn, .clear-cart-btn {
+        display: flex;
+        align-items: center;
+        gap: map-get($spacing-map, 1);
+        transition: $hover-transition;
+        border-radius: $border-radius-md;
+        font-weight: $font-weight-medium;
+        
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: $box-shadow-md;
+        }
+      }
+      
+      .checkout-btn {
+        background-color: $primary-color;
+        color: $text-on-primary;
+        
+        &:hover {
+          background-color: darken($primary-color, 10%);
+        }
+      }
+      
+      .clear-cart-btn {
+        background-color: $background-light;
+        color: $error-color;
+        border-color: $error-color;
+        
+        &:hover {
+          background-color: rgba($error-color, 0.05);
+        }
+      }
+    }
+
+    @media (max-width: map-get($breakpoints, md)) {
+      flex-direction: column;
+      align-items: stretch;
+      
+      .cart-summary-info {
+        text-align: center;
+        margin-bottom: map-get($spacing-map, 3);
+      }
+      
+      .cart-actions {
+        justify-content: center;
+      }
+    }
+  }
+
+  // Cart table styling
+  .cart-table {
+    margin-bottom: map-get($spacing-map, 3);
+    
+    .ant-table-wrapper {
+      overflow-x: auto;
+      
+      .ant-table {
+        background-color: $background-light;
+        border-radius: $border-radius-md;
+        overflow: hidden;
+        box-shadow: $box-shadow-xs;
+      }
+      
+      .ant-table-thead {
+        > tr > th {
+          background-color: lighten($primary-color, 40%);
+          color: $text-color-primary;
+          font-weight: $font-weight-bold;
+          text-align: center;
+          padding: map-get($spacing-map, 2);
+        }
+      }
+      
+      .ant-table-tbody {
+        > tr > td {
+          vertical-align: middle;
+          padding: map-get($spacing-map, 2);
+          font-size: map-get($font-sizes, base);
+          color: $text-color-secondary;
+        }
+        
+        > tr {
+          transition: $hover-transition;
+          
+          &:hover {
+            background-color: $background-grey;
+          }
+          
+          &.table-row-light {
+            background-color: $background-light;
+          }
+          
+          &.table-row-dark {
+            background-color: $background-grey;
+          }
+        }
+      }
+    }
+    
+    // Product image styling
+    .product-image-container {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      
+      .product-image {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        border-radius: $border-radius-sm;
+        border: $border-light;
+      }
+    }
+    
+    // Product info styling
+    .product-info {
+      text-align: left;
+      
+      .product-name {
+        margin-bottom: map-get($spacing-map, 1);
+        font-weight: $font-weight-medium;
+        color: $text-color-primary;
+        font-family: $font-family-heading;
+      }
+      
+      .product-sku {
+        color: $text-color-light;
+        font-size: map-get($font-sizes, sm);
+        margin: 0;
+      }
+    }
+    
+    // Price and total styling
+    .product-price, .product-total {
+      font-weight: $font-weight-medium;
+      color: $text-color-primary;
+    }
+    
+    // Delete button styling
+    .delete-item-btn {
+      transition: $hover-transition;
+      color: $error-color;
+      
+      &:hover {
+        background-color: rgba($error-color, 0.1);
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  // Quantity control styling
+  .quantity-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    .quantity-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      border-radius: $border-radius-sm;
+      
+      &:hover:not(:disabled) {
+        color: $primary-color;
+        border-color: $primary-color;
+      }
+      
+      &:active:not(:disabled) {
+        transform: scale(0.95);
+      }
+    }
+    
+    .quantity-display {
+      min-width: 50px;
+      text-align: center;
+      margin: 0 map-get($spacing-map, 1);
+      font-weight: $font-weight-medium;
+      
+      .ant-spin {
+        margin: 0;
+        
+        .anticon {
+          color: $primary-color;
+        }
+      }
+      
+      .quantity-input {
+        width: 50px;
+        text-align: center;
+        border: 1px solid $border-color;
+        border-radius: $border-radius-sm;
+        padding: 4px;
+        font-size: map-get($font-sizes, base);
+        color: $text-color-primary;
+        transition: $hover-transition;
+        
+        &:hover, &:focus {
+          border-color: $primary-color;
+          outline: none;
+          box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+        }
+        
+        &:disabled {
+          background-color: $background-grey;
+          cursor: not-allowed;
+        }
+        
+        // Loại bỏ mũi tên tăng giảm mặc định của input type number
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+        
+        /* Firefox */
+        &[type=number] {
+          -moz-appearance: textfield;
+        }
+      }
+    }
+  }
+
+  // Cart loading container
+  .cart-loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    text-align: center;
+    
+    .anticon {
+      color: $primary-color;
+    }
+    
+    p {
+      margin-top: map-get($spacing-map, 3);
+      color: $text-color-secondary;
+    }
+  }
+
+  // Empty cart
+  .cart-empty {
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: map-get($spacing-map, 4);
+    
+    .empty-cart-icon {
+      font-size: 48px;
+      margin-bottom: map-get($spacing-map, 3);
+      color: $primary-color;
+    }
+    
+    h3 {
+      margin-bottom: map-get($spacing-map, 2);
+      font-family: $font-family-heading;
+      color: $text-color-primary;
+    }
+    
+    p {
+      color: $text-color-secondary;
+      margin-bottom: map-get($spacing-map, 3);
+    }
+    
+    .shop-now-btn {
+      transition: $hover-transition;
+      background-color: $primary-color;
+      color: $text-on-primary;
+      border-radius: $border-radius-md;
+      font-weight: $font-weight-medium;
+      
+      &:hover {
+        transform: translateY(-2px);
+        background-color: darken($primary-color, 10%);
+        box-shadow: $box-shadow-md;
+      }
+    }
+  }
+
+  // Animations
+  // Updated animation for quantity changes
+  @keyframes highlight {
+    0% {
+      background-color: rgba($primary-color, 0.2);
+    }
+    50% {
+      background-color: rgba($primary-color, 0.1);
+    }
+    100% {
+      background-color: transparent;
+    }
+  }
+
+  .highlight-change {
+    animation: highlight 0.8s ease;
+  }
+  
+  // Fade out animation for item removal
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+  }
+  
+  .fade-out {
+    animation: fadeOut 0.3s ease forwards;
+  }
+  
+  // Responsive styles
+  @media (max-width: map-get($breakpoints, md)) {
+    padding: map-get($spacing-map, 2);
+    
+    .cart-table {
+      .ant-table {
+        font-size: map-get($font-sizes, sm);
+      }
+      
+      .ant-table-cell {
+        padding: map-get($spacing-map, 1) !important;
+      }
+      
+      .product-image-container {
+        width: 60px;
+        height: 60px;
+      }
+      
+      .delete-item-btn {
+        padding: 0;
+        
+        span + span {
+          display: none; // Hide text on mobile, keep only icon
+        }
+      }
+    }
+    
+    .quantity-control {
+      .quantity-btn {
+        width: 28px;
+        height: 28px;
+      }
+      
+      .quantity-display {
+        min-width: 40px;
+        
+        .quantity-input {
+          width: 40px;
+          font-size: map-get($font-sizes, sm);
+          padding: 2px;
+        }
+      }
+    }
+  }
+  
+  // Small mobile styles
+  @media (max-width: map-get($breakpoints, sm)) {
+    .cart-header {
+      h2 {
+        font-size: map-get($font-sizes, xl);
+      }
+    }
+    
+    .cart-page__summary {
+      .cart-actions {
+        flex-direction: column;
+        width: 100%;
+        
+        .ant-btn {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

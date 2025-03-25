@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Input, Button, message, Spin } from 'antd';
-import AdminLayout from '../../../components/layout/AdminLayout';
+import AdminLayout from '../../../components/layout/admin/AdminLayout';
 import userService from '../../../services/admin/userService';
-import '../../../styles/components/admin/ProfilePage.scss';
+import '../../../styles/admin/ProfilePage.scss';
 
 const ProfilePage = () => {
   const [form] = Form.useForm();

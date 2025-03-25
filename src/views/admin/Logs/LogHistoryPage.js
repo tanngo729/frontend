@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Table, message } from 'antd';
-import AdminLayout from '../../../components/layout/AdminLayout';
+import AdminLayout from '../../../components/layout/admin/AdminLayout';
 import logService from '../../../services/admin/logService';
 
 const LogHistoryPage = () => {

@@ -1,4 +1,4 @@
-import axios from '../axiosInstance';
+import axios from './adminAxiosInstance';
 
 const userService = {
   getProfile: async () => axios.get('/admin/profile'),

@@ -35,7 +35,7 @@ const UserForm = ({ initialValues = {}, onFinish, roleOptions = [] }) => {
     >
       <Form.Item
         label="Avatar"
-        name="avatarUrl"
+        name="avatar"
         valuePropName="fileList"
         getValueFromEvent={(e) => {
           if (Array.isArray(e)) {

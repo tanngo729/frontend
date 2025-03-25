@@ -1,5 +1,4 @@
-// src/services/admin/roleService.js
-import axios from '../axiosInstance';
+import axios from './adminAxiosInstance';
 
 const roleService = {
   getRoles: async () => axios.get('/admin/roles'),

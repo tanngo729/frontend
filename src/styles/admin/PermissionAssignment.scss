@@ -1,0 +1,61 @@
+// PermissionAssignment.scss
+@import './variables.scss';
+
+.permission-assignment {
+  padding: 24px;
+  background: #f8fafc;
+  min-height: calc(100vh - 64px);
+
+  h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: $heading-color;
+    margin-bottom: 32px;
+  }
+
+  .ant-table {
+    background: white;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+
+    &-thead > tr > th {
+      background: #f8fafc !important;
+      font-weight: 600;
+      color: $heading-color;
+      text-align: center;
+    }
+
+    td {
+      text-align: center;
+    }
+
+    .ant-checkbox-inner {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .save-btn {
+    margin-top: 24px;
+    text-align: center;
+
+    .ant-btn {
+      padding: 12px 32px;
+      height: auto;
+      font-weight: 500;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 16px;
+
+    h1 {
+      font-size: 20px;
+      margin-bottom: 24px;
+    }
+
+    .ant-table-wrapper {
+      overflow-x: auto;
+    }
+  }
+}

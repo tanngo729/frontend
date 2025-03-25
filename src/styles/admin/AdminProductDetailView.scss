@@ -1,0 +1,59 @@
+  .admin-product-detail {
+    padding: 24px;
+    
+    &.loading,
+    &.error,
+    &.not-found {
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .card-title {
+      .ant-typography {
+        margin-bottom: 0;
+      }
+    }
+
+    .product-image {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-info-row {
+      margin-bottom: 16px;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .description-text {
+      white-space: pre-line;
+    }
+
+    .price-highlight {
+      color: #f5222d;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .position-badge {
+      background: #f0f2f5;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      padding: 16px;
+      
+      .ant-card-body {
+        padding: 16px;
+      }
+    }
+  }

@@ -1,0 +1,132 @@
+@import '../variablesClient.scss';
+
+.productDetailContainer {
+  max-width: 1200px;
+  margin: map-get($spacing-map, 5) auto;
+  padding: 0 map-get($spacing-map, 2);
+}
+
+.productCard {
+  border: $border-light;
+  border-radius: $border-radius-lg;
+  background-color: $background-light;
+  box-shadow: $box-shadow-md;
+  overflow: hidden;
+  transition: $hover-transition;
+  margin-bottom: map-get($spacing-map, 3);
+  
+  &:hover {
+    box-shadow: $box-shadow-lg;
+    transform: translateY(-4px);
+  }
+  
+  :global(.ant-card-head) {
+    border-bottom: $border-light;
+    padding: 0 map-get($spacing-map, 3);
+
+    :global(.ant-card-head-title) {
+      padding: map-get($spacing-map, 3) 0;
+      font-family: $font-family-heading;
+      font-weight: $font-weight-bold;
+      color: $text-color-primary;
+    }
+  }
+
+  :global(.ant-card-body) {
+    padding: map-get($spacing-map, 3);
+  }
+}
+
+.productImage {
+  width: 100%;
+  border-radius: $border-radius-md;
+  overflow: hidden;
+  margin-bottom: map-get($spacing-map, 4);
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}
+
+.productDescription {
+  color: $text-color-secondary;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: map-get($spacing-map, 3);
+
+  @media (min-width: map-get($breakpoints, md)) {
+    font-size: 16px;
+  }
+}
+
+.priceSection {
+  display: flex;
+  align-items: center;
+  gap: map-get($spacing-map, 2);
+  margin-bottom: map-get($spacing-map, 4);
+
+  strong {
+    font-weight: $font-weight-medium;
+    color: $text-color-primary;
+  }
+
+  .priceValue {
+    color: $primary-color;
+    font-weight: $font-weight-bold;
+    font-size: 24px;
+  }
+}
+
+.ratingSection {
+  display: flex;
+  align-items: center;
+  gap: map-get($spacing-map, 2);
+  color: $text-color-secondary;
+
+  :global(.ant-rate) {
+    font-size: 16px;
+
+    .ant-rate-star {
+      color: $accent-color;
+    }
+  }
+}
+
+.backButton {
+  background-color: $primary-color;
+  color: $text-on-primary;
+  border: none;
+  font-weight: $font-weight-medium;
+  padding: 10px 20px; // Đồng nhất cho tất cả thiết bị
+  border-radius: $border-radius-sm;
+  transition: $hover-transition;
+  height: auto;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+    transform: translateY(-2px);
+    box-shadow: $box-shadow-sm;
+  }
+}
+
+.loadingState,
+.errorState {
+  text-align: center;
+  padding: map-get($spacing-map, 10) 0;
+
+  :global(.ant-spin-text) {
+    color: $text-color-secondary;
+    margin-top: map-get($spacing-map, 2);
+  }
+}
+
+.errorState {
+  h4 {
+    color: $error-color;
+    margin-bottom: map-get($spacing-map, 3);
+  }
+}
+
+

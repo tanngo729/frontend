@@ -1,8 +1,8 @@
 import React from 'react';
 import { Row, Col, Card } from 'antd';
 import { Link } from 'react-router-dom';
-import AdminLayout from '../../../components/layout/AdminLayout';
-import '../../../styles/components/admin/SettingPage.scss';
+import AdminLayout from '../../../components/layout/admin/AdminLayout';
+import '../../../styles/admin/SettingPage.scss';
 
 const SettingPage = () => {
   return (
@@ -43,7 +43,7 @@ const SettingPage = () => {
           <h2>Hệ thống</h2>
           <Row gutter={[16, 16]}>
             <Col xs={24} sm={12} md={8}>
-              <Link to="/admin/payment">
+              <Link to="/admin/payment-methods">
                 <Card hoverable title="Thanh toán" bordered={false}>
                   <p>Cấu hình các cài đặt thanh toán của ứng dụng.</p>
                 </Card>

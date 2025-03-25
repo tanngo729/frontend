@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Modal, Form, Input, Select, message, Space } from 'antd';
+import { Table, Modal, Form, Input, Select, message, Space, Button, Tooltip } from 'antd';
+import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import categoryService from '../../../services/admin/categoryService';
-import AdminLayout from '../../../components/layout/AdminLayout';
-import CommonButton from '../../../components/common/buttonActions/CommonButton';
+import AdminLayout from '../../../components/layout/admin/AdminLayout';
 import AddNewButton from '../../../components/common/AddNewButton/AddNewButton';
-import '../../../styles/components/admin/CategoryAdminView.scss';
+import '../../../styles/admin/CategoryAdminView.scss';
 
 const { Option } = Select;
 
@@ -14,6 +14,7 @@ const CategoryAdminView = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalLoading, setModalLoading] = useState(false);
   const [editingCategory, setEditingCategory] = useState(null);
+  const [actionLoading, setActionLoading] = useState({});
   const [form] = Form.useForm();
 
   // Tải tất cả danh mục
@@ -97,14 +98,26 @@ const CategoryAdminView = () => {
   };
 
   // Xóa danh mục
-  const handleDelete = async (id) => {
-    try {
-      await categoryService.deleteCategory(id);
-      message.success("Xóa danh mục thành công");
-      fetchAllCategories();
-    } catch (error) {
-      message.error("Lỗi khi xóa danh mục");
-    }
+  const handleDelete = (id) => {
+    Modal.confirm({
+      title: 'Xác nhận xóa',
+      content: 'Bạn có chắc chắn muốn xóa danh mục này?',
+      okText: 'Xóa',
+      cancelText: 'Hủy',
+      okButtonProps: { className: 'modal-ok-btn-danger' },
+      onOk: async () => {
+        try {
+          setActionLoading(prev => ({ ...prev, [id]: true }));
+          await categoryService.deleteCategory(id);
+          message.success("Xóa danh mục thành công");
+          fetchAllCategories();
+        } catch (error) {
+          message.error("Lỗi khi xóa danh mục");
+        } finally {
+          setActionLoading(prev => ({ ...prev, [id]: false }));
+        }
+      },
+    });
   };
 
   // Xử lý submit form (Tạo mới hoặc Cập nhật)
@@ -112,18 +125,36 @@ const CategoryAdminView = () => {
     try {
       const values = await form.validateFields();
       setModalLoading(true);
+
+      // Xử lý trường hợp parent null
+      if (values.parent === undefined || values.parent === '') {
+        values.parent = null;
+      }
+
+      console.log('Giá trị form gửi đi:', values);
+
       if (editingCategory) {
-        await categoryService.updateCategory(editingCategory._id, values);
+        // Thêm thông tin log để debug
+        console.log(`Đang cập nhật danh mục ID: ${editingCategory._id}`);
+
+        const response = await categoryService.updateCategory(editingCategory._id, values);
+        console.log('Kết quả cập nhật:', response);
         message.success("Cập nhật danh mục thành công");
       } else {
         await categoryService.createCategory(values);
         message.success("Thêm danh mục thành công");
       }
+
       setModalOpen(false);
       fetchAllCategories();
       form.resetFields();
     } catch (error) {
-      message.error("Lỗi khi lưu danh mục");
+      console.error("Lỗi chi tiết:", error);
+      if (error.response) {
+        message.error(error.response.data?.message || "Lỗi khi lưu danh mục");
+      } else {
+        message.error(error.message || "Lỗi khi lưu danh mục");
+      }
     } finally {
       setModalLoading(false);
     }
@@ -173,14 +204,27 @@ const CategoryAdminView = () => {
     {
       title: "Hành động",
       key: "actions",
+      width: 120,
       render: (text, record) => (
-        <Space size="middle">
-          <CommonButton onClick={() => openModal(record)} className="common-button-edit">
-            Sửa
-          </CommonButton>
-          <CommonButton onClick={() => handleDelete(record._id)} className="common-button-danger">
-            Xóa
-          </CommonButton>
+        <Space size="small">
+          <Tooltip title="Chỉnh sửa">
+            <Button
+              icon={<EditOutlined />}
+              onClick={() => openModal(record)}
+              type="primary"
+              ghost
+              size="small"
+            />
+          </Tooltip>
+          <Tooltip title="Xóa">
+            <Button
+              icon={<DeleteOutlined />}
+              onClick={() => handleDelete(record._id)}
+              danger
+              size="small"
+              loading={actionLoading[record._id]}
+            />
+          </Tooltip>
         </Space>
       ),
     },
@@ -197,11 +241,12 @@ const CategoryAdminView = () => {
         </div>
         <Table
           columns={columns}
-          dataSource={allCategories}  // hoặc treeData nếu muốn sử dụng dữ liệu cây
+          dataSource={allCategories}
           rowKey="_id"
           loading={loading}
           expandable={{ defaultExpandAllRows: true }}
           scroll={{ x: true }}
+          className="admin-table"
         />
         <Modal
           title={editingCategory ? "Cập nhật danh mục" : "Thêm danh mục mới"}

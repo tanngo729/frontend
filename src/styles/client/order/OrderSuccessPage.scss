@@ -1,0 +1,57 @@
+// src/styles/client/order/OrderSuccessPage.scss
+.order-success-page {
+  padding: 24px;
+  
+  &__loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+  }
+  
+  .order-details-card {
+    margin-top: 24px;
+  }
+  
+  .order-address,
+  .order-items,
+  .order-note {
+    margin-top: 24px;
+  }
+  
+  .order-items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+    
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    
+    th {
+      background-color: #fafafa;
+      font-weight: 500;
+    }
+    
+    .total-label {
+      text-align: right;
+      font-weight: 600;
+    }
+    
+    .total-value {
+      font-weight: 600;
+      color: #f5222d;
+    }
+  }
+  
+  // Responsive styling
+  @media (max-width: 768px) {
+    .order-items-table {
+      th, td {
+        padding: 8px;
+      }
+    }
+  }
+}

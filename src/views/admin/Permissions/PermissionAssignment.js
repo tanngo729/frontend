@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Table, Checkbox, Button, Space, message } from 'antd';
-import AdminLayout from '../../../components/layout/AdminLayout';
+import AdminLayout from '../../../components/layout/admin/AdminLayout';
 import roleService from '../../../services/admin/roleService';
 import permissionService from '../../../services/admin/permissionService';
-import '../../../styles/components/admin/PermissionAssignment.scss';
+import '../../../styles/admin/PermissionAssignment.scss';
 
 const PermissionAssignment = () => {
   const [roles, setRoles] = useState([]);

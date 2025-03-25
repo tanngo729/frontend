@@ -1,6 +1,6 @@
 // frontend/src/views/admin/AdminDashboard.js
 import React from 'react';
-import AdminLayout from '../../../components/layout/AdminLayout'; // Import AdminLayout
+import AdminLayout from '../../../components/layout/admin/AdminLayout'; // Import AdminLayout
 
 function AdminDashboard() {
   return (

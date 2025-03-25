@@ -1,0 +1,100 @@
+// src/styles/client/Login/LoginPage.scss
+@import '../variablesClient.scss';
+
+.login-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 0 20px;
+  min-height: calc(100vh - #{$header-height} - 200px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .login-card {
+    border-radius: $border-radius-md;
+    overflow: hidden;
+
+    .ant-card-body {
+      padding: 30px;
+    }
+  }
+
+  h2.ant-typography {
+    color: $text-color-primary;
+    margin-bottom: 20px;
+  }
+
+  .ant-form {
+    .ant-form-item {
+      margin-bottom: 20px;
+    }
+
+    .ant-input-affix-wrapper {
+      border-radius: $border-radius-sm;
+      
+      &:hover {
+        border-color: $primary-color;
+      }
+      
+      &-focused {
+        border-color: $primary-color;
+        box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+      }
+    }
+
+    .login-form-forgot {
+      color: $text-color-secondary;
+      
+      &:hover {
+        color: $primary-color;
+      }
+    }
+
+    .login-form-button {
+      height: 45px;
+      margin-top: 10px;
+      background-color: $primary-color;
+      border-color: $primary-color;
+      
+      &:hover, &:focus {
+        background-color: darken($primary-color, 10%);
+        border-color: darken($primary-color, 10%);
+      }
+    }
+  }
+
+  .ant-divider {
+    color: $text-color-light;
+    margin: 24px 0;
+  }
+
+  a {
+    color: $primary-color;
+    
+    &:hover {
+      color: darken($primary-color, 10%);
+      text-decoration: underline;
+    }
+  }
+
+  .ant-checkbox-wrapper {
+    color: $text-color-secondary;
+  }
+
+  .ant-checkbox-checked .ant-checkbox-inner {
+    background-color: $primary-color;
+    border-color: $primary-color;
+  }
+}
+
+@media (max-width: map-get($breakpoints, 'sm')) {
+  .login-container {
+    margin: 20px auto;
+    
+    .login-card {
+      .ant-card-body {
+        padding: 20px 15px;
+      }
+    }
+  }
+}

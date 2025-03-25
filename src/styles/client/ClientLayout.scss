@@ -1,0 +1,15 @@
+@import './variablesClient.scss';
+
+.client-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &-content {
+    margin-top: $header-height; 
+    flex: 1;
+    @media (max-width: 767px) {
+      margin-top: $header-height-mobile;
+    }
+  }
+}

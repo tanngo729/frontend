@@ -1,18 +1,19 @@
 // frontend/src/views/admin/Roles/RoleManagement.jsx
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import { Table, Space, message, Modal } from 'antd';
-import AdminLayout from '../../../components/layout/AdminLayout';
+import { Table, Space, message, Modal, Button, Tooltip } from 'antd';
+import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import AdminLayout from '../../../components/layout/admin/AdminLayout';
 import roleService from '../../../services/admin/roleService';
-import CommonButton from '../../../components/common/buttonActions/CommonButton';
 import AddNewButton from '../../../components/common/AddNewButton/AddNewButton';
 import RoleModal from './RoleModal';
-import '../../../styles/components/admin/RoleManagement.scss';
+import '../../../styles/admin/RoleManagement.scss';
 
 const RoleManagement = () => {
   const [roles, setRoles] = useState([]);
   const [loading, setLoading] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [editingRole, setEditingRole] = useState(null);
+  const [actionLoading, setActionLoading] = useState({});
 
   const fetchRoles = async () => {
     setLoading(true);
@@ -45,11 +46,14 @@ const RoleManagement = () => {
       title: "Bạn có chắc chắn muốn xóa nhóm quyền này?",
       onOk: async () => {
         try {
+          setActionLoading(prev => ({ ...prev, [roleId]: true }));
           await roleService.deleteRole(roleId);
           message.success("Xóa nhóm quyền thành công");
           fetchRoles();
         } catch (error) {
           message.error("Lỗi khi xóa nhóm quyền");
+        } finally {
+          setActionLoading(prev => ({ ...prev, [roleId]: false }));
         }
       },
     });
@@ -76,18 +80,31 @@ const RoleManagement = () => {
     {
       title: 'Hành động',
       key: 'actions',
+      width: 120,
       render: (text, record) => (
-        <Space size="middle">
-          <CommonButton onClick={() => handleEdit(record)} className="common-button-edit">
-            Sửa
-          </CommonButton>
-          <CommonButton onClick={() => handleDelete(record._id)} className="common-button-danger">
-            Xóa
-          </CommonButton>
+        <Space size="small">
+          <Tooltip title="Chỉnh sửa">
+            <Button
+              icon={<EditOutlined />}
+              onClick={() => handleEdit(record)}
+              type="primary"
+              ghost
+              size="small"
+            />
+          </Tooltip>
+          <Tooltip title="Xóa">
+            <Button
+              icon={<DeleteOutlined />}
+              onClick={() => handleDelete(record._id)}
+              danger
+              size="small"
+              loading={actionLoading[record._id]}
+            />
+          </Tooltip>
         </Space>
       ),
     },
-  ], [handleEdit, handleDelete]);
+  ], [handleEdit, handleDelete, actionLoading]);
 
   return (
     <AdminLayout>
@@ -104,6 +121,7 @@ const RoleManagement = () => {
           rowKey="_id"
           loading={loading}
           pagination={{ pageSize: 5 }}
+          className="admin-table"
         />
         <RoleModal
           visible={modalVisible}

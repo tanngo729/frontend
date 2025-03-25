@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Button, Modal, Form, Input, InputNumber, Upload, Image, Space, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
-import AdminLayout from '../../../components/layout/AdminLayout';
+import AdminLayout from '../../../components/layout/admin/AdminLayout';
 import bannerService from '../../../services/admin/bannerService';
 
 const BannerManagement = () => {
@@ -21,9 +21,21 @@ const BannerManagement = () => {
     setLoading(true);
     try {
       const res = await bannerService.getBanners();
-      setBanners(res.data);
+
+      // Kiểm tra xem res.data có tồn tại và là array không
+      if (res && res.data && Array.isArray(res.data)) {
+        setBanners(res.data);
+      } else if (res && res.data && res.data.data && Array.isArray(res.data.data)) {
+        // Đôi khi API trả về dạng { data: [...] }
+        setBanners(res.data.data);
+      } else {
+        console.error('Unexpected API response format:', res);
+        setBanners([]);
+        message.error('Dữ liệu banner không đúng định dạng');
+      }
     } catch (error) {
       console.error('Error fetching banners:', error);
+      setBanners([]); // Đặt về mảng rỗng khi có lỗi
       message.error('Lỗi khi tải banner');
     } finally {
       setLoading(false);

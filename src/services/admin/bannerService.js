@@ -1,5 +1,4 @@
-// src/services/admin/bannerService.js
-import axios from '../axiosInstance';
+import axios from './adminAxiosInstance';
 
 const bannerService = {
   getBanners: async () => {
